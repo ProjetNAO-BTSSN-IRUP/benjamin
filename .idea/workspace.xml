@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="266f27d0-6feb-49f2-ac94-18d60fd8d8fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="266f27d0-6feb-49f2-ac94-18d60fd8d8fd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +68,6 @@
             <path>
               <item name="NAO" type="b2602c69:ProjectViewProjectNode" />
               <item name="NAO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NAO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NAO" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -192,12 +184,12 @@
       <workItem from="1554447979797" duration="1149000" />
       <workItem from="1554449153430" duration="5538000" />
       <workItem from="1554703981939" duration="2191000" />
-      <workItem from="1554706266832" duration="3017000" />
+      <workItem from="1554706266832" duration="3512000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76924000" />
+    <option name="totallyTimeSpent" value="77419000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -236,7 +228,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/audio_response.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
