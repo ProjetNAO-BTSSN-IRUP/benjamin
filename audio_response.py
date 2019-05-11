@@ -1,21 +1,48 @@
 # -*- coding: utf-8 -*
 
 import socket
+import time
 from naoqi import ALProxy
 import MySQLdb
 
 
-class Response():
+def nao_ip():
+    ip_nao = socket.gethostbyname("NAO")
+    return ip_nao
+
+
+def qr_code_recognition():
+    # ip_nao = nao_ip()
+    ip_nao = "192.168.0.25"
+    barcode = ALProxy("ALBarcodeReader", ip_nao, 9559)
+    barcode.subscribe("test_barcode")
+    
+    memory = ALProxy("ALMemory", ip_nao, 9559)
+    
+    for i in range(20):
+        data = memory.getData("BarcodeReader/BarcodeDetected")
+        if data:
+            is_recognized = True
+            data = data[0][0].split(",")
+            print type(data), data
+            time.sleep(1)
+            return is_recognized, data
+        
+
+qr_code_recognition()
+
+class Response:
     
     def __init__(self):
-        ip_nao = socket.gethostbyname("NAO")
+        ip_nao = nao_ip()
         print ">>>{0}".format(ip_nao)
         self.tts = ALProxy("ALTextToSpeech", ip_nao, 9559)
         
         db = MySQLdb.connect(host="SRV-NAO",  # your host
                              user="benjamin",  # username
                              passwd="benjamin",  # password
-                             db="benjamin")  # name of the database
+                             db="benjamin",
+                             charset="utf8")  # name of the database
         
         # Create a Cursor object to execute queries.
         self.cur = db.cursor()
@@ -29,14 +56,14 @@ class Response():
         n = 0
         for row in self.cur.fetchall():
             if n == 0:  # Dire que la premiere ligne
-                # print type(row[0]), row[0]
-                response = row[0]
-                response = response.format(self.prenom, self.nom, self.retard)
+                response = row[0].encode("utf-8")
+                print type(response), response
+                # response = response.format(self.prenom, self.nom, self.retard)
                 self.tts.say(response)
                 # n += 1
     
     def response_from_facial_recognition(self):
-        is_recognized = True
+        is_recognized = False
         
         if is_recognized:
             print "Face reconnue"
@@ -46,7 +73,7 @@ class Response():
             print "Aucune reconnaissance"
 
     def response_from_qr_code_recognition(self):
-        is_recognized = False
+        is_recognized = True
     
         if is_recognized:
             
@@ -56,15 +83,4 @@ class Response():
             print "Aucune reconnaissance"
             
 
-Response().response_from_facial_recognition()
-
-
-# Question/Réponse
-# tts.say("Tu vas bien ?")
-# x = raw_input()
-# if x == "oui":
-#     tts.say("C'est bien.")
-# if x == "non":
-#     tts.say("Cool.")
-
-
+# Response().response_from_qr_code_recognition()
